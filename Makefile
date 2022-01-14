@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = $(GAME_SRC) $(GNL_SRC)
 
 SRC = so_long.c	error.c	validate_map.c \
-		utils.c
+		utils.c	render_game.c	hook.c \
+		validate_map2.c	move.c
 GAME_SRC = $(addprefix src/, $(SRC))
 
 LIBFT_A = libft.a
@@ -21,7 +22,7 @@ all	: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ) $(LIBFT) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@

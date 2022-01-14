@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:05:13 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/11 15:32:16 by jharras          ###   ########.fr       */
+/*   Updated: 2022/01/14 21:39:02 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,28 @@
 # include <stdio.h>
 # include <fcntl.h>
 
+typedef enum e_items
+{
+	PLAYER = 'P',
+	BORDER = '1',
+	COINS = 'C',
+	EXIT = 'E',
+	SPACE = '0',
+	ENEMY = '!',
+}	t_items;
+
+typedef enum e_keycode
+{
+	W = 13,
+	UP = 126,
+	S = 1,
+	DOWN = 125,
+	A = 0,
+	LEFT = 123,
+	D = 2,
+	RIGHT = 124
+}	t_keycode;
+
 typedef struct s_vars
 {
 	void	*mlx;
@@ -30,23 +52,47 @@ typedef struct s_player
 {
 	int	x;
 	int	y;
+	int	count_steps;
 }		t_player;
+
+typedef struct s_img
+{
+	void	*border;
+	void	*plr;
+	void	*coin;
+	void	*exit;
+	void	*space;
+	void	*enemy;
+	int		width;
+	int		height;
+}		t_img;
+
+typedef struct s_map
+{
+	char	**map;
+	int		c_coin;
+	int		c_plr;
+	int		c_exit;
+	int		col;
+	int		row;
+}		t_map;
 
 typedef struct s_game
 {
-	char	**map;
-	int		move;
-	int		total_coins;
-	int		coins;
-	int		enemy;
-	int		width;
-	int		frame;
-	char	*xpm_door;
-	char	*xpm_thief;
+	t_vars		vars_mlx;
+	t_map		map;
+	t_img		img;
+	t_player	player;
+	int			height;
+	int			width;
 }		t_game;
 
 void	error_msg_and_exit(char *message);
-void	validate_map(char *map_path);
+void	validate_type_map(char *map_path);
 int		ft_strcmp(const char *s1, const char *s2);
-
+void	validate_map(t_game *game);
+void	render_map(t_game *game);
+int		red_cross(t_game *game);
+void	validate_count_items(t_game *game);
+int		key_hook(int keycode, t_game *game);
 #endif

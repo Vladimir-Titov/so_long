@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 14:45:29 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/13 20:38:54 by jharras          ###   ########.fr       */
+/*   Created: 2022/01/14 17:17:08 by jharras           #+#    #+#             */
+/*   Updated: 2022/01/14 21:09:56 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	red_cross(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (-1);
-		i++;
-	}
-	if (s1[i] != '\0' && s2[i] != '\0')
-		return (-1);
-	return (0);
+	(void) game;
+	exit(0);
 }
