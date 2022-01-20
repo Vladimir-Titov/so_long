@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 20:17:36 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/14 21:48:58 by jharras          ###   ########.fr       */
+/*   Updated: 2022/01/20 12:55:07 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	move_up(t_game *game)
 
 	x = game->player.x;
 	y = game->player.y;
-	if (game->map.map[y - 1][x] != BORDER &&
-		game->map.map[y - 1][x] != EXIT)
+	if (check_move(game, y - 1, x))
 	{
 		game->map.map[y][x] = '0';
 		game->map.map[y - 1][x] = 'P';
@@ -36,8 +35,7 @@ static void	move_down(t_game *game)
 
 	x = game->player.x;
 	y = game->player.y;
-	if (game->map.map[y + 1][x] != BORDER &&
-		game->map.map[y + 1][x] != EXIT)
+	if (check_move(game, y + 1, x))
 	{
 		game->map.map[y][x] = '0';
 		game->map.map[y + 1][x] = 'P';
@@ -53,8 +51,7 @@ static void	move_left(t_game *game)
 
 	x = game->player.x;
 	y = game->player.y;
-	if (game->map.map[y][x - 1] != BORDER &&
-		game->map.map[y][x - 1] != EXIT)
+	if (check_move(game, y, x - 1))
 	{
 		game->map.map[y][x] = '0';
 		game->map.map[y][x - 1] = 'P';
@@ -70,8 +67,7 @@ static void	move_right(t_game *game)
 
 	x = game->player.x;
 	y = game->player.y;
-	if (game->map.map[y][x + 1] != BORDER &&
-		game->map.map[y][x + 1] != EXIT)
+	if (check_move(game, y, x + 1))
 	{
 		game->map.map[y][x] = '0';
 		game->map.map[y][x + 1] = 'P';

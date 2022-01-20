@@ -6,13 +6,13 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:11:58 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/14 19:17:33 by jharras          ###   ########.fr       */
+/*   Updated: 2022/01/20 14:56:40 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	bind_image(t_game *game)
+void	bind_image(t_game *game)
 {
 	game->img.border = mlx_xpm_file_to_image(game->vars_mlx.mlx,
 			"img/brick2.xpm", &game->img.width, &game->img.height);
@@ -107,7 +107,6 @@ static void	render_background(t_game *game)
 
 void	render_map(t_game *game)
 {
-	bind_image(game);
 	render_background(game);
 	put_image(game);
 	put_image2(game);

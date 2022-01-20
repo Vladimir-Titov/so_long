@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:38:51 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/14 21:33:46 by jharras          ###   ########.fr       */
+/*   Updated: 2022/01/20 14:56:09 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	init_game(t_game *game)
 	game->map.c_exit = 0;
 	game->map.c_plr = 0;
 	game->player.count_steps = 0;
+	game->end_game = 0;
 }
 
 static void	check_empty_line(char *map)
@@ -85,6 +86,7 @@ int	main(int argc, char **argv)
 	game.vars_mlx.mlx = mlx_init();
 	game.vars_mlx.win = mlx_new_window(game.vars_mlx.mlx, game.width, 
 			game.height, "so long");
+	bind_image(&game);
 	render_map(&game);
 	mlx_key_hook(game.vars_mlx.win, key_hook, &game);
 	mlx_hook(game.vars_mlx.win, 17, 0, red_cross, &game);

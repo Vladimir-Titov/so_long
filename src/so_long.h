@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:05:13 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/14 21:39:02 by jharras          ###   ########.fr       */
+/*   Updated: 2022/01/20 14:56:36 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_game
 	t_player	player;
 	int			height;
 	int			width;
+	int			end_game;
 }		t_game;
 
 void	error_msg_and_exit(char *message);
@@ -95,4 +96,6 @@ void	render_map(t_game *game);
 int		red_cross(t_game *game);
 void	validate_count_items(t_game *game);
 int		key_hook(int keycode, t_game *game);
+int		check_move(t_game *game, int y, int x);
+void	bind_image(t_game *game);
 #endif

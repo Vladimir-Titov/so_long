@@ -6,7 +6,8 @@ SRCS = $(GAME_SRC) $(GNL_SRC)
 
 SRC = so_long.c	error.c	validate_map.c \
 		utils.c	render_game.c	hook.c \
-		validate_map2.c	move.c
+		validate_map2.c	move.c	move2.c \
+		
 GAME_SRC = $(addprefix src/, $(SRC))
 
 LIBFT_A = libft.a
