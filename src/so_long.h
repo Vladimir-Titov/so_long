@@ -6,14 +6,13 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:05:13 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/20 14:56:36 by jharras          ###   ########.fr       */
+/*   Updated: 2022/02/22 12:44:00 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 
 # include <mlx.h>
@@ -33,13 +32,9 @@ typedef enum e_items
 typedef enum e_keycode
 {
 	W = 13,
-	UP = 126,
 	S = 1,
-	DOWN = 125,
 	A = 0,
-	LEFT = 123,
-	D = 2,
-	RIGHT = 124
+	D = 2
 }	t_keycode;
 
 typedef struct s_vars
@@ -75,6 +70,7 @@ typedef struct s_map
 	int		c_exit;
 	int		col;
 	int		row;
+	int		put_p;
 }		t_map;
 
 typedef struct s_game
@@ -98,4 +94,9 @@ void	validate_count_items(t_game *game);
 int		key_hook(int keycode, t_game *game);
 int		check_move(t_game *game, int y, int x);
 void	bind_image(t_game *game);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_split(char const *s, char c);
+size_t	ft_strlen(char *str);
+void	ft_putstr(char *s);
+void	ft_putnbr(int n);
 #endif

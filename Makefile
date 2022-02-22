@@ -7,12 +7,9 @@ SRCS = $(GAME_SRC) $(GNL_SRC)
 SRC = so_long.c	error.c	validate_map.c \
 		utils.c	render_game.c	hook.c \
 		validate_map2.c	move.c	move2.c \
+		ft_put.c	ft_split.c \
 		
 GAME_SRC = $(addprefix src/, $(SRC))
-
-LIBFT_A = libft.a
-LIBFT_DIR = libft/
-LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_A))
 
 GNL = get_next_line.c get_next_line_utils.c
 GNL_SRC = $(addprefix gnl/, $(GNL))
@@ -22,10 +19,9 @@ OBJ = $(SRCS:%.c=%.o)
 all	: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
 
-%.o: %.c
+%.o: %.c src/so_long.h
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:	

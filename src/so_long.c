@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:38:51 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/20 14:56:09 by jharras          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:35:44 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	init_game(t_game *game)
 	game->map.c_plr = 0;
 	game->player.count_steps = 0;
 	game->end_game = 0;
+	game->map.put_p = 0;
 }
 
 static void	check_empty_line(char *map)
@@ -75,6 +76,8 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	if (argc != 2)
+		error_msg_and_exit("Use ./so_long *.ber\n");
 	if (argc == 2)
 	{
 		init_game(&game);
@@ -84,7 +87,7 @@ int	main(int argc, char **argv)
 		init_window(&game);
 	}
 	game.vars_mlx.mlx = mlx_init();
-	game.vars_mlx.win = mlx_new_window(game.vars_mlx.mlx, game.width, 
+	game.vars_mlx.win = mlx_new_window(game.vars_mlx.mlx, game.width,
 			game.height, "so long");
 	bind_image(&game);
 	render_map(&game);

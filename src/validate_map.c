@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:51:40 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/14 19:34:32 by jharras          ###   ########.fr       */
+/*   Updated: 2022/02/22 11:53:01 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	check_items(t_game *game)
 			continue ;
 		}
 		if (map[i][j] != PLAYER && map[i][j] != BORDER && map[i][j] != COINS
-		&& map[i][j] != EXIT && map[i][j] != SPACE && map[i][j] != ENEMY )
+		&& map[i][j] != EXIT && map[i][j] != SPACE)
 			error_msg_and_exit("Not valid char on the map!");
 		j++;
 	}

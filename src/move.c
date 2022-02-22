@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 20:17:36 by jharras           #+#    #+#             */
-/*   Updated: 2022/01/20 12:55:07 by jharras          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:46:29 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,23 @@ static void	move_right(t_game *game)
 
 int	key_hook(int keycode, t_game *game)
 {
-	if (keycode == W || keycode == UP)
+	if (keycode == W)
 		move_up(game);
-	if (keycode == S || keycode == DOWN)
+	if (keycode == S)
 		move_down(game);
-	if (keycode == A || keycode == LEFT)
+	if (keycode == A)
 		move_left(game);
-	if (keycode == D || keycode == RIGHT)
+	if (keycode == D)
 		move_right(game);
 	if (keycode == 53)
 		exit(0);
+	if (keycode == W || keycode == S || keycode == A
+		|| keycode == D)
+	{
+		ft_putstr("steps ");
+		ft_putnbr(game->player.count_steps);
+		ft_putstr("\n");
+	}
 	render_map(game);
 	return (0);
 }
