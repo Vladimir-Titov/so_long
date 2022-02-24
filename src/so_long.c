@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:38:51 by jharras           #+#    #+#             */
-/*   Updated: 2022/02/22 14:35:44 by jharras          ###   ########.fr       */
+/*   Updated: 2022/02/24 17:36:42 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	check_empty_line(char *map)
 	i = 0;
 	while (map[i])
 	{
-		if (map[i] == '\n' && map[i + 1] == '\n')
-			error_msg_and_exit("Empty line!");
+		if ((map[i] == '\n' && ft_strlen(map) == 1))
+			error_msg_and_exit("Empty line!\n");
 		i++;
 	}
 }
@@ -60,13 +60,13 @@ static void	read_map(char *map_path, t_game *game)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
+		check_empty_line(line);
 		tmp = buf;
 		buf = ft_strjoin(buf, line);
 		free(line);
 		free(tmp);
 		game->map.row += 1;
 	}
-	check_empty_line(buf);
 	map = ft_split(buf, '\n');
 	game->map.map = map;
 	free(buf);
