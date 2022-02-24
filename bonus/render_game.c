@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:11:58 by jharras           #+#    #+#             */
-/*   Updated: 2022/02/24 17:40:56 by jharras          ###   ########.fr       */
+/*   Updated: 2022/02/24 19:13:57 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	bind_image(t_game *game)
 			"img/coinGold.xpm", &game->img.width, &game->img.height);
 	game->img.exit = mlx_xpm_file_to_image(game->vars_mlx.mlx,
 			"img/exit.xpm", &game->img.width, &game->img.height);
+	game->img.enemy = mlx_xpm_file_to_image(game->vars_mlx.mlx,
+			"img/spikes.xpm", &game->img.width, &game->img.height);
 }
 
 static void	put_image(t_game *game)
@@ -65,12 +67,12 @@ static void	put_image2(t_game *game)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] == PLAYER)
-			{
-				mlx_put_image_to_window(game->vars_mlx.mlx,
-					game->vars_mlx.win, game->img.plr, j * 64, i * 64);
-				j++;
-			}
+			// if (map[i][j] == PLAYER)
+			// {
+			// 	mlx_put_image_to_window(game->vars_mlx.mlx,
+			// 		game->vars_mlx.win, game->img.plr, j * 64, i * 64);
+			// 	j++;
+			// }
 			if (map[i][j] == EXIT)
 				mlx_put_image_to_window(game->vars_mlx.mlx, game->vars_mlx.win,
 					game->img.exit, j * 64, i * 64);
@@ -103,9 +105,10 @@ static void	render_background(t_game *game)
 	}
 }
 
-void	render_map(t_game *game)
+void	render_map(t_game *game, int keycode)
 {
 	render_background(game);
 	put_image(game);
 	put_image2(game);
+	print_player(game, keycode);
 }
