@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:38:51 by jharras           #+#    #+#             */
-/*   Updated: 2022/02/24 19:27:19 by jharras          ###   ########.fr       */
+/*   Updated: 2022/03/10 13:48:23 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	bind_image(&game);
 	mlx_key_hook(game.vars_mlx.win, key_hook, &game);
 	mlx_hook(game.vars_mlx.win, 17, 0, red_cross, &game);
-	mlx_loop_hook(game.vars_mlx.mlx, animation, &game);
+	mlx_loop_hook(game.vars_mlx.mlx, render_map, &game);
 	mlx_loop(game.vars_mlx.mlx);
 	exit(0);
 }

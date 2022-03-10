@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 18:09:05 by jharras           #+#    #+#             */
-/*   Updated: 2022/03/10 13:24:50 by jharras          ###   ########.fr       */
+/*   Updated: 2022/03/10 14:13:19 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ int	animation(t_game *game)
 	free(steps);
 	return (0);
 }
-

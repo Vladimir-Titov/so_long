@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:41:17 by jharras           #+#    #+#             */
-/*   Updated: 2022/02/24 19:28:02 by jharras          ###   ########.fr       */
+/*   Updated: 2022/03/10 14:13:35 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,25 @@ static void	check_end_game(t_game *game, int y, int x)
 		game->img.exit = mlx_xpm_file_to_image(game->vars_mlx.mlx,
 				"img/exit_open.xpm", &game->img.width, &game->img.height);
 		game->map.map[y][x] = '0';
-		render_map(game, -1);
+		render_map(game);
 	}
+}
+
+static void	end_game(void)
+{
+	write(1, "LOSE!\n", 7);
+	exit(0);
 }
 
 int	check_move(t_game *game, int y, int x)
 {
 	if (game->map.map[y][x] != BORDER &&
 		game->map.map[y][x] != EXIT &&
-		game->map.map[y][x] != COINS)
+		game->map.map[y][x] != COINS &&
+		game->map.map[y][x] != ENEMY)
 		return (1);
+	else if (game->map.map[y][x] == ENEMY)
+		end_game();
 	else if (game->map.map[y][x] == COINS)
 	{
 		game->map.c_coin--;

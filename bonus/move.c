@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 20:17:36 by jharras           #+#    #+#             */
-/*   Updated: 2022/02/24 19:12:41 by jharras          ###   ########.fr       */
+/*   Updated: 2022/03/10 13:46:18 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ int	key_hook(int keycode, t_game *game)
 		move_right(game);
 	if (keycode == 53)
 		exit(0);
-	render_map(game, keycode);
+	render_map(game);
 	return (0);
 }

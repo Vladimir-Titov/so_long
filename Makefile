@@ -15,7 +15,7 @@ BONUS_SRC = so_long.c	error.c	validate_map.c \
 			utils.c	render_game.c	hook.c \
 			validate_map2.c	move.c	move2.c \
 			ft_put.c	ft_split.c	animation.c \
-			ft_itoa.c	render_player.c	\
+			ft_itoa.c	\
 
 GAME_SRCS = $(addprefix src/, $(SRC))
 BONUS_SRCS = $(addprefix bonus/, $(BONUS_SRC))
@@ -33,8 +33,8 @@ bonus	: $(NAME_BONUS)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
 
-$(NAME_BONUS):	$(OBJ_BONUS)
-	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ_BONUS) -o $(NAME_BONUS)
+$(NAME_BONUS):	$(OBJ_BONUS) bonus/so_long.h
+	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ_BONUS) -o $(NAME_BONUS) 
 
 %.o: %.c src/so_long.h
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@

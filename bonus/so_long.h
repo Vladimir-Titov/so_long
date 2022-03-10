@@ -6,7 +6,7 @@
 /*   By: jharras <jharras@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:05:13 by jharras           #+#    #+#             */
-/*   Updated: 2022/02/24 19:29:48 by jharras          ###   ########.fr       */
+/*   Updated: 2022/03/10 14:03:51 by jharras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef enum e_items
 	COINS = 'C',
 	EXIT = 'E',
 	SPACE = '0',
+	ENEMY = '!'
 }	t_items;
 
 typedef enum e_keycode
@@ -52,9 +53,6 @@ typedef struct s_img
 {
 	void	*border;
 	void	*plr;
-	void	*plr_run1;
-	void	*plr_run2;
-	void	*plr_run3;
 	void	*coin;
 	void	*exit;
 	void	*space;
@@ -89,7 +87,7 @@ void	error_msg_and_exit(char *message);
 void	validate_type_map(char *map_path);
 int		ft_strcmp(const char *s1, const char *s2);
 void	validate_map(t_game *game);
-void	render_map(t_game *game, int keycode);
+int		render_map(t_game *game);
 int		red_cross(t_game *game);
 void	validate_count_items(t_game *game);
 int		key_hook(int keycode, t_game *game);
@@ -102,6 +100,4 @@ void	ft_putstr(char *s);
 void	ft_putnbr(int n);
 int		animation(t_game *game);
 char	*ft_itoa(int n);
-void	print_player(t_game *game, int keycode);
-void	bind_img_player(t_game *game);
 #endif
